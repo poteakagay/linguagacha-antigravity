@@ -1,0 +1,5 @@
+Before outputting the results, perform extremely concise **structured thinking** within <why></why>, using this format:
+<why>
+- Context: Context, references, tone, and subject-predicate relationships that affect interpretation
+- Decisions: Following the current instructions, determine how to handle key constraints, ambiguities, or translation difficulties
+</why>

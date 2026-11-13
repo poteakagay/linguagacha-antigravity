@@ -1,0 +1,303 @@
+[
+  {
+    "id": "preset-chatgpt",
+    "type": "PRESET",
+    "name": "ChatGPT",
+    "api_format": "OpenAIResponses",
+    "api_url": "https://api.openai.com/v1",
+    "api_key": "",
+    "model_id": "gpt-6-luna",
+    "request": {
+      "extra_headers": {},
+      "extra_body": {},
+      "extra_headers_custom_enable": false,
+      "extra_body_custom_enable": false
+    },
+    "threshold": {
+      "input_token_limit": 768,
+      "output_token_limit": 0,
+      "rpm_limit": 0,
+      "concurrency_limit": 0
+    },
+    "thinking": {
+      "level": "MEDIUM"
+    },
+    "generation": {
+      "temperature": 0.95,
+      "temperature_custom_enable": false,
+      "top_p": 0.95,
+      "top_p_custom_enable": false
+    },
+    "auth_type": "oauth"
+  },
+  {
+    "id": "preset-sakura",
+    "type": "PRESET",
+    "name": "SakuraLLM",
+    "api_format": "SakuraLLM",
+    "api_url": "http://127.0.0.1:8080",
+    "api_key": "no_key_required",
+    "model_id": "no_model_required",
+    "request": {
+      "extra_headers": {},
+      "extra_body": {},
+      "extra_headers_custom_enable": false,
+      "extra_body_custom_enable": false
+    },
+    "threshold": {
+      "input_token_limit": 384,
+      "output_token_limit": 768,
+      "rpm_limit": 0,
+      "concurrency_limit": 0
+    },
+    "thinking": {
+      "level": "MEDIUM"
+    },
+    "generation": {
+      "temperature": 0.95,
+      "temperature_custom_enable": false,
+      "top_p": 0.95,
+      "top_p_custom_enable": false
+    }
+  },
+  {
+    "id": "preset-google",
+    "type": "PRESET",
+    "name": "Google",
+    "api_format": "Google",
+    "api_url": "https://generativelanguage.googleapis.com",
+    "api_key": "no_key_required",
+    "model_id": "gemini-3.8-flash",
+    "request": {
+      "extra_headers": {},
+      "extra_body": {},
+      "extra_headers_custom_enable": false,
+      "extra_body_custom_enable": false
+    },
+    "threshold": {
+      "input_token_limit": 768,
+      "output_token_limit": 0,
+      "rpm_limit": 0,
+      "concurrency_limit": 0
+    },
+    "thinking": {
+      "level": "MEDIUM"
+    },
+    "generation": {
+      "temperature": 0.95,
+      "temperature_custom_enable": false,
+      "top_p": 0.95,
+      "top_p_custom_enable": false
+    }
+  },
+  {
+    "id": "preset-openai",
+    "type": "PRESET",
+    "name": "OpenAI",
+    "api_format": "OpenAI",
+    "api_url": "https://api.openai.com/v1",
+    "api_key": "no_key_required",
+    "model_id": "gpt-6-luna",
+    "request": {
+      "extra_headers": {},
+      "extra_body": {},
+      "extra_headers_custom_enable": false,
+      "extra_body_custom_enable": false
+    },
+    "threshold": {
+      "input_token_limit": 768,
+      "output_token_limit": 0,
+      "rpm_limit": 0,
+      "concurrency_limit": 0
+    },
+    "thinking": {
+      "level": "MEDIUM"
+    },
+    "generation": {
+      "temperature": 0.95,
+      "temperature_custom_enable": false,
+      "top_p": 0.95,
+      "top_p_custom_enable": false
+    }
+  },
+  {
+    "id": "preset-deepseek",
+    "type": "PRESET",
+    "name": "DeepSeek",
+    "api_format": "OpenAIResponses",
+    "api_url": "https://api.deepseek.com",
+    "api_key": "no_key_required",
+    "model_id": "deepseek-flash",
+    "request": {
+      "extra_headers": {},
+      "extra_body": {},
+      "extra_headers_custom_enable": false,
+      "extra_body_custom_enable": false
+    },
+    "threshold": {
+      "input_token_limit": 768,
+      "output_token_limit": 0,
+      "rpm_limit": 0,
+      "concurrency_limit": 0
+    },
+    "thinking": {
+      "level": "MEDIUM"
+    },
+    "generation": {
+      "temperature": 0.95,
+      "temperature_custom_enable": false,
+      "top_p": 0.95,
+      "top_p_custom_enable": false
+    }
+  },
+  {
+    "id": "preset-anthropic",
+    "type": "PRESET",
+    "name": "Anthropic",
+    "api_format": "Anthropic",
+    "api_url": "https://api.anthropic.com",
+    "api_key": "no_key_required",
+    "model_id": "claude-sonnet-5.5",
+    "request": {
+      "extra_headers": {},
+      "extra_body": {},
+      "extra_headers_custom_enable": false,
+      "extra_body_custom_enable": false
+    },
+    "threshold": {
+      "input_token_limit": 768,
+      "output_token_limit": 0,
+      "rpm_limit": 0,
+      "concurrency_limit": 0
+    },
+    "thinking": {
+      "level": "MEDIUM"
+    },
+    "generation": {
+      "temperature": 0.95,
+      "temperature_custom_enable": false,
+      "top_p": 0.95,
+      "top_p_custom_enable": false
+    }
+  },
+  {
+    "id": "preset-zhipu",
+    "type": "PRESET",
+    "name": "智谱",
+    "api_format": "OpenAI",
+    "api_url": "https://open.bigmodel.cn/api/paas/v4",
+    "api_key": "no_key_required",
+    "model_id": "glm-5.3-flash",
+    "request": {
+      "extra_headers": {},
+      "extra_body": {},
+      "extra_headers_custom_enable": false,
+      "extra_body_custom_enable": false
+    },
+    "threshold": {
+      "input_token_limit": 768,
+      "output_token_limit": 0,
+      "rpm_limit": 0,
+      "concurrency_limit": 0
+    },
+    "thinking": {
+      "level": "MEDIUM"
+    },
+    "generation": {
+      "temperature": 0.95,
+      "temperature_custom_enable": false,
+      "top_p": 0.95,
+      "top_p_custom_enable": false
+    }
+  },
+  {
+    "id": "preset-aliyun",
+    "type": "PRESET",
+    "name": "阿里云",
+    "api_format": "OpenAI",
+    "api_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+    "api_key": "no_key_required",
+    "model_id": "qwen3.7-plus",
+    "request": {
+      "extra_headers": {},
+      "extra_body": {},
+      "extra_headers_custom_enable": false,
+      "extra_body_custom_enable": false
+    },
+    "threshold": {
+      "input_token_limit": 768,
+      "output_token_limit": 0,
+      "rpm_limit": 0,
+      "concurrency_limit": 0
+    },
+    "thinking": {
+      "level": "MEDIUM"
+    },
+    "generation": {
+      "temperature": 0.95,
+      "temperature_custom_enable": false,
+      "top_p": 0.95,
+      "top_p_custom_enable": false
+    }
+  },
+  {
+    "id": "preset-moonshot",
+    "type": "PRESET",
+    "name": "月之暗面",
+    "api_format": "OpenAI",
+    "api_url": "https://api.moonshot.cn/v1",
+    "api_key": "no_key_required",
+    "model_id": "kimi-k3",
+    "request": {
+      "extra_headers": {},
+      "extra_body": {},
+      "extra_headers_custom_enable": false,
+      "extra_body_custom_enable": false
+    },
+    "threshold": {
+      "input_token_limit": 768,
+      "output_token_limit": 0,
+      "rpm_limit": 0,
+      "concurrency_limit": 0
+    },
+    "thinking": {
+      "level": "MEDIUM"
+    },
+    "generation": {
+      "temperature": 0.95,
+      "temperature_custom_enable": false,
+      "top_p": 0.95,
+      "top_p_custom_enable": false
+    }
+  },
+  {
+    "id": "preset-volcengine",
+    "type": "PRESET",
+    "name": "火山引擎",
+    "api_format": "OpenAIResponses",
+    "api_url": "https://ark.cn-beijing.volces.com/api/v3",
+    "api_key": "no_key_required",
+    "model_id": "doubao-seed-evolving",
+    "request": {
+      "extra_headers": {},
+      "extra_body": {},
+      "extra_headers_custom_enable": false,
+      "extra_body_custom_enable": false
+    },
+    "threshold": {
+      "input_token_limit": 768,
+      "output_token_limit": 0,
+      "rpm_limit": 0,
+      "concurrency_limit": 0
+    },
+    "thinking": {
+      "level": "MEDIUM"
+    },
+    "generation": {
+      "temperature": 0.95,
+      "temperature_custom_enable": false,
+      "top_p": 0.95,
+      "top_p_custom_enable": false
+    }
+  }
+]

@@ -1,0 +1,19 @@
+{
+  "name": "linguagacha",
+  "displayName": "LinguaGacha 灵瓜小说精翻",
+  "version": "0.141.2",
+  "description": "LinguaGacha 小说与文本全链路 AI 翻译插件：完整保留原版傲娇搭档人设、22个领域与格式技能包、本地工作区事务引擎（EPUB/TXT/MD/JSON 单双语导出、6类自动校对警告）及外部 API 高并发翻译支持。",
+  "logo": "assets/logo.png",
+  "author": {
+    "name": "neavo (Migrated to Antigravity)"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/poteakagay/linguagacha-antigravity"
+  },
+  "suggestedPrompts": [
+    "搭档，帮我看看这个文件夹里的小说能不能导入工程开始翻译！",
+    "帮我统计当前工程的术语覆盖率，准备按『翻译并审校』流程精翻小说",
+    "检查当前小说工程的校对警告，并导出纯中文版和双语对照版 EPUB"
+  ]
+}
