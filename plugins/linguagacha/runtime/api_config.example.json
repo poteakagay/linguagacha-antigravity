@@ -1,0 +1,38 @@
+{
+  "_说明": "将本文件复制为小说文件夹下的 api_config.json（或 plugins/linguagacha/api_config.json），填入你的真实 API Key，即可解锁整本小说高并发自动精翻！注意：api_config.json 已加入 .gitignore，绝不会上传泄露。",
+  "active_profile": "deepseek",
+  "profiles": {
+    "deepseek": {
+      "api_format": "openai",
+      "base_url": "https://api.deepseek.com/v1",
+      "api_key": "请填入你的API密钥",
+      "model": "deepseek-chat",
+      "concurrency": 6,
+      "batch_size": 25,
+      "max_retries": 2,
+      "timeout_seconds": 120,
+      "temperature": 0.3,
+      "prompt_enhancement_enable": false
+    },
+    "gemini": {
+      "api_format": "gemini",
+      "base_url": "https://generativelanguage.googleapis.com/v1beta",
+      "api_key": "请填入你的API密钥",
+      "model": "gemini-2.5-flash",
+      "concurrency": 6,
+      "batch_size": 30,
+      "max_retries": 2,
+      "timeout_seconds": 120
+    },
+    "sakurallm_local": {
+      "api_format": "sakurallm",
+      "base_url": "http://127.0.0.1:8080/v1",
+      "api_key": "EMPTY",
+      "model": "sakura-14b-qwen2.5-v1.0",
+      "concurrency": 2,
+      "batch_size": 15,
+      "max_retries": 2,
+      "timeout_seconds": 180
+    }
+  }
+}

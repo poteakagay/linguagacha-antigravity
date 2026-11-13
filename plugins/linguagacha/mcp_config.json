@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "linguagacha": {
+      "command": "node",
+      "args": [
+        "D:/Antigravity/灵瓜迁移反重力/plugins/linguagacha/runtime/mcp-server.mjs"
+      ]
+    }
+  }
+}

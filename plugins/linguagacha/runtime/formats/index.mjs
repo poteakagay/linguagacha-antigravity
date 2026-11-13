@@ -38,7 +38,14 @@ const UNSUPPORTED_BINARY_EXTENSIONS = new Map([
 function walkDirectoryFiles(rootDir) {
   const files = [];
   for (const entry of fs.readdirSync(rootDir, { withFileTypes: true })) {
-    if (entry.name === ".lg_workspace" || entry.name === ".git" || entry.name === "node_modules") continue;
+    if (
+      entry.name === ".lg_workspace" ||
+      entry.name === ".lg_project" ||
+      entry.name === ".git" ||
+      entry.name === "node_modules"
+    ) {
+      continue;
+    }
     const full = path.join(rootDir, entry.name);
     if (entry.isDirectory()) files.push(...walkDirectoryFiles(full));
     else if (entry.isFile()) files.push(full);
