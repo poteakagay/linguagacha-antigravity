@@ -1,0 +1,17 @@
+# Node & OS
+node_modules/
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Local API credentials & user overrides (NEVER commit secrets)
+*.local.json
+*.secret.json
+api_config.json
+.env
+.env.*
+
+# Runtime scratch & test outputs
+tests/.tmp/
+plugins/linguagacha/runtime/.tmp/
+*.lg_ws/
