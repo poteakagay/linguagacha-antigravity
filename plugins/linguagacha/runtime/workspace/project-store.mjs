@@ -475,7 +475,7 @@ export class ProjectStore {
           const entries = readZipEntries(origBytes);
           fs.mkdirSync(targetPath, { recursive: true });
           for (const [memberName, entry] of entries.entries()) {
-            if (entry.isDir) continue;
+            if (entry.dir || entry.isDir) continue;
             const safeMember = memberName.replace(/\\/gu, "/").replace(/^\/+/u, "");
             if (safeMember.split("/").includes("..")) continue;
             const memberPath = path.join(targetPath, safeMember);

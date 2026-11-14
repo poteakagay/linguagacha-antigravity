@@ -97,9 +97,9 @@ export function writeZipBuffer(entriesInput, options = {}) {
       ? entriesInput
       : Object.entries(entriesInput).map(([name, data]) => ({ name, data }));
 
-  const mimetypeIdx = list.findIndex((e) => e.name === "mimetype");
+  const mimetypeIdx = list.findIndex((e) => (e.name ?? e.path) === "mimetype");
   if (mimetypeIdx >= 0) {
-    ordered.push({ ...list[mimetypeIdx], compression: "STORE", dir: false });
+    ordered.push({ ...list[mimetypeIdx], name: "mimetype", compression: "STORE", dir: false });
   }
   for (let i = 0; i < list.length; i += 1) {
     if (i === mimetypeIdx) continue;
@@ -111,7 +111,7 @@ export function writeZipBuffer(entriesInput, options = {}) {
   let localOffset = 0;
 
   for (const item of ordered) {
-    const normName = String(item.name).replace(/\\/gu, "/");
+    const normName = String(item.name ?? item.path).replace(/\\/gu, "/");
     if (item.dir || normName.endsWith("/")) continue;
 
     const nameBytes = Buffer.from(normName, "utf8");

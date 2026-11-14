@@ -24,8 +24,13 @@ let activeStore = null;
 
 function requireActiveStore() {
   if (!activeStore) {
-    const fallbackDir = process.env.LG_DEFAULT_PROJECT_DIR || process.cwd();
-    activeStore = new ProjectStore(fallbackDir);
+    if (process.env.LG_DEFAULT_PROJECT_DIR) {
+      activeStore = new ProjectStore(process.env.LG_DEFAULT_PROJECT_DIR);
+      return activeStore;
+    }
+    throw new Error(
+      "当前尚未打开任何小说翻译工程目录。请先调用 workspace_open({ project_dir: '<小说所在文件夹绝对路径>', source_language: 'JA', target_language: 'ZH' }) 绑定工程目录后再继续！",
+    );
   }
   return activeStore;
 }
