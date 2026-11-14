@@ -249,6 +249,6 @@
   - `workspace_run`：调用 MCP 工具 `workspace_run` 执行 ESM 脚本（内置全局 `ws`、`@lg/utils/literal-matcher`、`@lg/project`、`@lg/project/item-contexts` 及 `jszip` / `chardet` / `iconv-lite` 等兼容模块）。
   - `workspace_apply`：调用 MCP 工具 `workspace_apply` 提交 `changes/` 变更批次并自动重算 6 类校对警告。
   - `read_skill`：优先调用 MCP 工具 `read_skill` 读取技能正文或参考文档（返回 `content` 与以 `/` 结尾的 `base_url`，供 `workspace_run` 中 `await import(new URL("scripts/...", base_url).href)` 直接加载技能脚本）；也可使用反重力内置 `read_file` 读取。
-  - `batch_item_translation` / `batch_llm_request`：当用户已在外部 API 配置文件中填好密钥并希望高并发批量初翻时直接调用；当未配置外部 API 或用户希望用反重力当前原生模型直接精翻/审校时，由当前代理（或 `invoke_subagent` 子代理）按 `translation` 技能业务单元直接生成译文并通过 `workspace_run` + `workspace_apply` 提交。
+  - `batch_item_translation` / `batch_llm_request`：仅在用户明确选择外部 API 且配置可用时使用。使用反重力原生模型时，超过 200 条的常规整书翻译、全书精修审校或全文术语排查（用户要求不写入工程或对译文提出工程提示词之外的要求时除外），必须主动调用 `invoke_subagent`（`TypeName: "self"`）或宿主等效工具，按章节、场景和语义关联拆分独立任务包，通常每包约 200 条，并提供明确范围、必要上下文、任务文件路径、用户要求、适用术语及条件、文风与文本保护规则，同时声明其子代理身份（禁止子代理继续派发子代理或调用 `workspace_open`）。子代理只在各自独立的 `work/` 子目录交付结果，不写共享 `changes/` 与共享种子账本，不调用 `workspace_apply`。主代理负责维护种子账本、核对覆盖、解决跨包分歧、合并结果，通过 `workspace_run` + `workspace_apply` 提交，并完成最终审校。此安排优先于领域技能中执行者选择和直接提交的默认规则；用户明确指定的执行方式优先。子代理工具不可用时如实说明。
 - **向用户提问映射**：上文与各技能中的 `ask_user` 统一调用反重力内置的 `ask_question` 工具执行。
 - **小说与文本支持范围说明**：当前插件运行时 100% 完整实装 `EPUB`、`TXT`、`MD_V2`（Markdown）、`KVJSON`、`MESSAGEJSON`、字幕（`SRT`/`ASS`/`VTT`/`LRC`）与 `.generic` 全套解析、6 类质量校对警告与单语/双语导出；游戏专用二进制解封包、C++ MuPDF 重排及本地语音识别未在本地 Node 引擎中实装，遇到此类请求时如实向搭档说明支持边界。

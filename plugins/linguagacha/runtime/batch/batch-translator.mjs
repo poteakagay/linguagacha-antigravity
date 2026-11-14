@@ -20,10 +20,10 @@ import {
 } from "./prompt-builder.mjs";
 
 const MISSING_CONFIG_HELP = [
-  "未检测到外部批量翻译 API 配置（api_config.json）。",
-  "可选处理方式：",
-  "1. 【免 Key 原生模式】如果篇幅适中，请直接通过 workspace_run 读取 items/entries.jsonl，由当前反重力主模型按批精翻后写入 changes/items/updates.jsonl 并调用 workspace_apply 提交；",
-  "2. 【海量长篇高速并发模式】请引导用户将插件目录下的 runtime/api_config.example.json 复制为工程目录下的 api_config.json（或 plugins/linguagacha/api_config.json），填入 DeepSeek / Gemini / OpenAI / SakuraLLM 密钥后即可启用高并发批量翻译。",
+  "未检测到外部批量 API 配置（api_config.json）。本工具仅在用户明确选择外部 API 且配置可用时使用。",
+  "请按以下规则继续执行：",
+  "1. 【反重力原生模型模式（默认）】不超过 200 条（或有不写入工程、额外提示词定制要求）时，由主代理直接通过 workspace_run + workspace_apply 处理；其余超过 200 条的情况，必须按 AGENTS.md 调用 invoke_subagent（TypeName: \"self\"）拆分为独立任务包（仅在各自独立的 work/ 子目录交付结果，禁止写共享 changes/ 与共享种子账本、禁止调 workspace_apply），回收后由主代理统一核对并调用 workspace_apply 提交。",
+  "2. 【外部 API 并发模式】仅当用户明确要求使用外部 API 时，引导用户将插件目录下的 runtime/api_config.example.json 复制为工程目录下的 api_config.json（或 plugins/linguagacha/api_config.json），填入密钥后重试。",
 ].join("\n");
 
 function matchActivatedGlossary(glossaryEntries, chunkTexts) {

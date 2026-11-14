@@ -177,8 +177,8 @@ const TOOL_DEFINITIONS = [
   {
     name: "batch_item_translation",
     description: [
-      "调用外部配置的 LLM API 并发批量翻译当前工程的 `items`，自动注入术语表、前后文与控制符保护，翻译结果直接提交到工程并自动维护同文去重状态。",
-      "至少提供 `item_ids` 或 `item_statuses` 之一。若用户未配置外部 `api_config.json`，可改用 `workspace_run` + `workspace_apply` 在当前对话内直接精翻提交。",
+      "仅在用户明确选择外部 API 且 `api_config.json` 可用时调用：通过外部 LLM API 并发批量翻译当前工程的 `items`，自动注入术语表、前后文与控制符保护，结果直接提交到工程并自动维护同文去重状态。",
+      "至少提供 `item_ids` 或 `item_statuses` 之一。默认使用反重力原生模型或未配置外部 `api_config.json` 时请勿调用本工具：按执行者规则由主代理（不超过 200 条或有特殊要求时）或 `invoke_subagent` 子代理分包生成译文后，通过 `workspace_run` + `workspace_apply` 提交。",
     ].join("\n"),
     inputSchema: {
       type: "object",
@@ -204,7 +204,8 @@ const TOOL_DEFINITIONS = [
   {
     name: "batch_llm_request",
     description: [
-      "并发执行工作区清单中的独立 LLM 请求（`{\"format\":\"messages\",\"requests\":[{\"id\":\"001\",\"input_file\":\"inputs/001.json\"}]}`），结果保存到工作区并返回 `result_file` 索引路径。",
+      "仅在用户明确选择外部 API 且 `api_config.json` 可用时调用：并发执行工作区清单中的独立外部 LLM 请求（`{\"format\":\"messages\",\"requests\":[{\"id\":\"001\",\"input_file\":\"inputs/001.json\"}]}`），结果保存到工作区并返回 `result_file` 索引路径。",
+      "默认使用反重力原生模型需要独立上下文分包处理时，请勿调用本工具，改为调用 `invoke_subagent`（`TypeName: \"self\"`）派发独立 `work/` 子目录任务包。",
     ].join("\n"),
     inputSchema: {
       type: "object",
