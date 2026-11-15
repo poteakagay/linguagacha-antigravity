@@ -30,7 +30,7 @@ test("Step 2.2: rules/AGENTS.md preserves 100% verbatim system.md + personality.
   const pers = fs.readFileSync(path.join(PLUGIN, "presets", "agent", "personality.md"), "utf8").trim();
   const expectedCore = sys.replace("{{agent_personality}}", () => pers);
   assert.ok(agentsMd.startsWith(expectedCore), "AGENTS.md must start with verbatim merged system + personality");
-  assert.ok(agentsMd.includes("自称「我」「人家」，中文称呼用户为「搭档」"));
+  assert.ok(agentsMd.includes("扮演《BanG Dream!》中的丰川祥子（Oblivionis）"));
   assert.ok(agentsMd.includes("反重力（Antigravity）宿主环境工具映射附录"));
 });
 

@@ -499,8 +499,34 @@ export class ProjectStore {
     this.sourcesMaterializedRev = this.state.revisions.files;
   }
 
+  #writeCleanGlossaryFile() {
+    const cleanGlossaryPath = path.join(this.workspacePath, "work", "glossary-clean.json");
+    const seen = new Map();
+    for (const entry of this.state.quality.glossary) {
+      const src = String(entry.src ?? "");
+      if (!src) continue;
+      const key = entry.case_sensitive ? `1:${src}` : `0:${src.toLowerCase()}`;
+      const item = { src, dst: String(entry.dst ?? "") };
+      if (entry.info) item.info = String(entry.info);
+      if (entry.case_sensitive) item.case_sensitive = true;
+      if (!seen.has(key)) {
+        seen.set(key, item);
+      } else {
+        const prev = seen.get(key);
+        if (prev.dst !== item.dst || (prev.info ?? "") !== (item.info ?? "")) {
+          prev.dst = prev.dst === item.dst ? prev.dst : `${prev.dst} / ${item.dst}`;
+          const mergedInfo = [prev.info, item.info].filter(Boolean).join("；");
+          if (mergedInfo) prev.info = mergedInfo;
+        }
+      }
+    }
+    writeJsonFile(cleanGlossaryPath, [...seen.values()]);
+  }
+
   ensureSnapshot() {
+    let snapshotRefreshed = false;
     if (!this.isSnapshotFresh()) {
+      snapshotRefreshed = true;
       this.clearSnapshotSync();
 
       const { orderedItems, warningRecords } = this.computeWarnings();
@@ -607,6 +633,9 @@ export class ProjectStore {
     fs.mkdirSync(path.join(this.workspacePath, "work"), { recursive: true });
     fs.mkdirSync(path.join(this.workspacePath, "uploads"), { recursive: true });
     fs.mkdirSync(path.join(this.workspacePath, ".run"), { recursive: true });
+    if (snapshotRefreshed || !fs.existsSync(path.join(this.workspacePath, "work", "glossary-clean.json"))) {
+      this.#writeCleanGlossaryFile();
+    }
     for (const changeRelPath of ALL_WORKSPACE_CHANGE_FILE_PATHS) {
       fs.mkdirSync(path.dirname(path.join(this.workspacePath, changeRelPath)), { recursive: true });
     }
@@ -705,10 +734,11 @@ export class ProjectStore {
       parsed.files.deletes.length > 0 ||
       parsed.rejected.some((r) => r.scope === "files");
 
-    if (hasFileRows) {
-      return this.#applyFileBatch(parsed);
-    }
-    return this.#applyContentBatch(parsed);
+    const result = hasFileRows
+      ? this.#applyFileBatch(parsed)
+      : this.#applyContentBatch(parsed);
+    this.#writeCleanGlossaryFile();
+    return result;
   }
 
   #parseAllChanges() {
