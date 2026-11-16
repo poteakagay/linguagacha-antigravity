@@ -143,7 +143,7 @@ node -v
 ## 🎭 自定义助手人设与平时写代码切换
 
 - **平时写代码想暂时关闭插件时**：在聊天框输入 `/plugin`（或进入 **Customizations -> Plugins**），点击开关关闭 **LinguaGacha 灵瓜小说精翻** 即可立即恢复普通编程助手，无需重启；要翻小说时再打开即可。
-- **想更换助手对话人设时**：当前默认对话人设为《BanG Dream!》丰川祥子（端庄典雅大小姐风格，仅用于日常对话，翻译正文严格保持客观中立）。若您想换成其他角色或原版傲娇搭档风格，直接编辑 `plugins/linguagacha/presets/agent/personality.md` 与 `plugins/linguagacha/rules/AGENTS.md` 中的 `# 角色设定` 段落即可。
+- **想更换助手对话人设时**：当前默认对话人设为《BanG Dream!》丰川祥子（端庄典雅大小姐风格，仅用于日常对话，翻译正文严格保持客观中立）。若您想换成其他角色或原版傲娇搭档风格，直接编辑 `plugins/linguagacha/rules/AGENTS.md` 中的 `# 角色设定` 段落即可。
 
 ---
 
@@ -172,15 +172,14 @@ node -v
 ```text
 linguagacha-antigravity/
 ├── README.md                          # 仓库安装与使用说明书
-├── plugins/
-│   └── linguagacha/                   # 反重力插件本体
-│       ├── plugin.json                # 插件清单与快捷提示词
-│       ├── mcp_config.json            # 本地 MCP 服务启动配置
-│       ├── README.md                  # 反重力插件面板内嵌说明文档
-│       ├── rules/AGENTS.md            # 系统工作流宪章与对话人设
-│       ├── skills/                    # 23 个技能包（含逐句审校标准与可执行脚本）
-│       ├── presets/                   # 预设规则与翻译提示词模板库
-│       └── runtime/                   # 纯 Node.js 本地解析、校对、工作区事务与并发 API 引擎
-│           └── api_config.example.json # 外部 API 并发配置模板
-└── tests/                             # 自动化验收测试套件
+└── plugins/
+    └── linguagacha/                   # 反重力插件本体
+        ├── plugin.json                # 插件清单与快捷提示词
+        ├── mcp_config.json            # 本地 MCP 服务启动配置
+        ├── README.md                  # 反重力插件面板内嵌说明文档
+        ├── rules/AGENTS.md            # 系统工作流宪章与对话人设
+        ├── skills/                    # 23 个技能包（含逐句审校标准与可执行脚本）
+        ├── presets/                   # 预设规则与翻译提示词模板库
+        └── runtime/                   # 纯 Node.js 本地解析、校对、工作区事务与并发 API 引擎
+            └── api_config.example.json # 外部 API 并发配置模板
 ```
